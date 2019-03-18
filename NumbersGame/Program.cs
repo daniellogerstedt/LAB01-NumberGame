@@ -10,11 +10,13 @@ namespace NumbersGame
             {
                 StartSequence();
             }
+            // This is the catch block to catch any errors that bubble up to the top layer of the application (bottom of the call stack)
             catch (Exception e)
             {
                 Console.WriteLine("Unfortunately, something went wrong");
                 Console.WriteLine($"Error: {e.Message}");
             }
+            // This is the finally block at signals the end of the program.
             finally
             {
                 Console.WriteLine("The Game Has Ended");
@@ -25,6 +27,7 @@ namespace NumbersGame
         {
             Console.WriteLine("Please Enter A Number Greater Than 0");
             string answer = Console.ReadLine();
+            // Super Special Surprise Error
             if (answer.Equals("Surprise")) throw new Exception("This is a surprise error.");
             try
             {
@@ -34,6 +37,7 @@ namespace NumbersGame
                 int sum = GetSum(popArr);
                 int product = GetProduct(popArr, sum);
                 decimal quotient = GetQuotient(product);
+                // The math to get the random number selected and the divisor provided for writing to the console.
                 int random = product / sum;
                 decimal divisor = product / quotient;
                 Console.WriteLine($"Your array is size: {popArrLen}");
@@ -47,15 +51,12 @@ namespace NumbersGame
                 Console.WriteLine($"{sum} * {random} = {product}");
                 Console.WriteLine($"{product} / {divisor} = {quotient}");
             }
+            // catch blocks for Format and Overflow Exceptions
             catch (FormatException e)
             {
                 throw e;
             }
             catch (OverflowException e)
-            {
-                throw e;
-            }
-            catch (Exception e)
             {
                 throw e;
             }
@@ -69,6 +70,7 @@ namespace NumbersGame
             {
                 Console.WriteLine($"Please enter a number {i + 1}/{arrLen}");
                 string answer = Console.ReadLine();
+                // I decided to use int.Parse here as part of the first stretch goal
                 int number = int.Parse(answer);
                 popArr[i] = number;
             }
@@ -90,6 +92,7 @@ namespace NumbersGame
         {
             Console.WriteLine($"Please enter a random number between 1 and {popArr.Length}");
             string randomString = Console.ReadLine();
+            // I decided to use Int32.Parse here as part of the first stretch goal
             int randomNumber = Int32.Parse(randomString);
             try
             {
@@ -107,6 +110,7 @@ namespace NumbersGame
         {
             Console.WriteLine($"Please enter a number to divide your product {product} by");
             string divisorString = Console.ReadLine();
+            // I decided to use int.TryParse here as part of the first stretch goal, this is an odd one as it technically returns a bool and sets a variable equal to the int if true.
             int.TryParse(divisorString, out int divisor);
             try
             {
