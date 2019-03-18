@@ -28,8 +28,8 @@ namespace NumbersGame
             try
             {
                 int popArrLen = Convert.ToInt32(answer);
-                int[] popArr = new int[popArrLen];
-                Populate(popArr);
+                int[] unpopArr = new int[popArrLen];
+                int[] popArr = Populate(unpopArr);
                 int sum = GetSum(PopArr);
                 int product = GetProduct(popArr, sum);
                 int quotient = GetQuotient(product);
@@ -59,6 +59,19 @@ namespace NumbersGame
                 throw e;
             }
             
+        }
+
+        static int[] Populate(int[] popArr)
+        {
+            int arrLen = popArr.Length;
+            for (int i = 0; i < arrLen; i++)
+            {
+                Console.WriteLine($"Please enter a number {i + 1}/{arrLen}");
+                string answer = Console.ReadLine();
+                int number = int.Parse(answer);
+                popArr[i] = number;
+            }
+            return popArr;
         }
     }
 }
