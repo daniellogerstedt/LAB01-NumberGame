@@ -6,7 +6,15 @@ namespace NumbersGame
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            try
+            {
+                StartSequence();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Unfortunately, something went wrong");
+                Console.WriteLine($"Error: {e.Message}");
+            }
         }
     }
 }
