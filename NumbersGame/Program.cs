@@ -73,5 +73,18 @@ namespace NumbersGame
             }
             return popArr;
         }
+
+        static int GetSum(int[] popArr)
+        {
+            int sum = 0;
+            for (int i = 0; i < popArr.Length; i++)
+            {
+                sum = sum + popArr[i];
+            }
+            if (sum < 20) throw new Exception($"Value of {sum} is too low");
+            return sum;
+        }
+
+
     }
 }
