@@ -25,16 +25,17 @@ namespace NumbersGame
         {
             Console.WriteLine("Please Enter A Number Greater Than 0");
             string answer = Console.ReadLine();
+            if (answer.Equals("Surprise")) throw new Exception("This is a surprise error.");
             try
             {
                 int popArrLen = Convert.ToInt32(answer);
                 int[] unpopArr = new int[popArrLen];
                 int[] popArr = Populate(unpopArr);
-                int sum = GetSum(PopArr);
+                int sum = GetSum(popArr);
                 int product = GetProduct(popArr, sum);
-                int quotient = GetQuotient(product);
+                decimal quotient = GetQuotient(product);
                 int random = product / sum;
-                int divisor = product / quotient;
+                decimal divisor = product / quotient;
                 Console.WriteLine($"Your array is size: {popArrLen}");
                 string numbersString = $"The numbers in the array are {popArr[0]}";
                 for (int i = 1; i < popArrLen; i++)
@@ -102,6 +103,20 @@ namespace NumbersGame
             }
         }
 
-
+        static decimal GetQuotient(int product)
+        {
+            Console.WriteLine($"Please enter a number to divide your product {product} by");
+            string divisorString = Console.ReadLine();
+            int.TryParse(divisorString, out int divisor);
+            try
+            {
+                decimal quotient = decimal.Divide(product, divisor);
+                return quotient;
+            }
+            catch (DivideByZeroException e)
+            {
+                throw e;
+            }
+        }
     }
 }
