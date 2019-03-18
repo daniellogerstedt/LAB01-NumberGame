@@ -85,6 +85,23 @@ namespace NumbersGame
             return sum;
         }
 
+        static int GetProduct(int[] popArr, int sum)
+        {
+            Console.WriteLine($"Please enter a random number between 1 and {popArr.Length}");
+            string randomString = Console.ReadLine();
+            int randomNumber = Int32.Parse(randomString);
+            try
+            {
+                int product = sum * popArr[randomNumber - 1];
+                return product;
+            }
+            catch (IndexOutOfRangeException e)
+            {
+                Console.WriteLine(e.Message);
+                throw e;
+            }
+        }
+
 
     }
 }
